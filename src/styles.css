@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --background: rgba(255, 185, 0, 1);
+  --black: rgba(29, 29, 27, 1);
+  --standard-green: rgba(169, 202, 73, 1);
+  --green-1: rgba(122, 145, 57, 1);
+  --green-2: rgba(169, 203, 86, 1);
+  --green-3: rgba(162, 183, 100, 1);
+  --green-4: rgba(135, 165, 52, 1);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  font-family: "Poppins", sans-serif;
+  background-size: 400%;
+  animation: animateBG 8s ease infinite;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: var(--green-2) var(--tw-gradient-from-position);
+  --tw-gradient-from-position: ;
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-via-position: ;
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--green-3) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: var(--green-4) var(--tw-gradient-to-position);
+  --tw-gradient-to-position: ;
+}
+
+@keyframes animateBG {
+  0%,
+  to {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  background: #fff;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1.25rem 1.875rem;
+  border-radius: 0.5rem;
+  animation: fadeIn 0.6s ease-in-out;
+  margin-bottom: 4rem;
+}
+
+.form-container .title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--black);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 2rem;
+}
+
+.form-container form .form-row {
+  display: flex;
+  margin-top: 1.875rem;
+}
+
+.form-row .input-container {
+  width: 100%;
+  height: 3.375rem;
+  margin: 0 1.25rem;
+  position: relative;
+}
+
+.input-container input,
+.input-container select,
+.input-container textarea {
+  width: 100%;
+  min-height: 3.375rem;
+  border: none;
+  font-size: 1rem;
+  padding: 1.1rem 1.1rem 0.688rem 0;
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.1);
+}
+
+/* Remove input background color in autocomplete */
+.input-container input:-webkit-autofill,
+.input-container input:-webkit-autofill:hover,
+.input-container input:-webkit-autofill:focus,
+.input-container input:-webkit-autofill:active,
+.input-container select:-webkit-autofill,
+.input-container textarea:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.textarea textarea {
+  resize: none;
+  padding: 1.625rem 1.2rem 0.625rem 0;
+  overflow: hidden;
+  height: 120px;
+}
+
+form .form-row .textarea {
+  height: 118px;
+}
+
+.textarea label {
+  top: 23% !important;
+  background-color: #fff;
+  width: 90%;
+}
+
+.input-container label {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  top: 50%;
+  left: 0;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  transform: translateY(-50%);
+  cursor: text;
+  text-align: left;
+  color: var(--black);
+}
+
+.input-container input:focus ~ label,
+.input-container input:not(:placeholder-shown) ~ label,
+.input-container select:focus ~ label,
+.input-container select:valid ~ label,
+.input-container textarea:focus ~ label,
+.input-container textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-2rem);
+  font-size: 0.875rem;
+  color: var(--standard-green);
+}
+
+.input-container .underline {
+  position: absolute;
+  bottom: -0.125rem;
+  height: 0.125rem;
+  width: 100%;
+}
+
+.input-container .underline:before {
+  position: absolute;
+  content: "";
+  height: 0.125rem;
+  width: 100%;
+  background: var(--standard-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.input-container input:focus ~ .underline:before,
+.input-container input:not(:placeholder-shown) ~ .underline:before,
+.input-container select:focus ~ .underline:before,
+.input-container select:valid ~ .underline:before,
+.textarea textarea:focus ~ .underline:before,
+.textarea textarea:not(:placeholder-shown) ~ .underline:before {
+  transform: scaleX(1);
+}
+
+.submit-btn {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  transition: opacity 0.3s ease-in-out;
+}
+
+form:invalid > .submit-btn .input-container input {
+  pointer-events: none;
+  opacity: 0.4;
+  transition: opacity 0.3s ease-in-out;
+  background-color: var(--black);
+}
+
+form:invalid > .submit-btn .input-container {
+}
+
+.submit-btn .input-container {
+  width: 10rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.submit-btn .input-container input {
+  border-radius: 4px;
+  background-color: var(--standard-green);
+  color: #fff;
+  font-size: 17px;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  border: 0;
+  transition: 0.3s;
+}
+
+.submit-btn .input-container input:hover {
+  background: var(--green-1);
+  color: #fff;
+  cursor: pointer;
+}
+
+.heart-container,
+.heart-container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.heart-container svg {
+  height: 1.5rem;
+}
+
+.heart {
+  font-size: 3rem;
+  animation: animateHeart 2.5s infinite;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(0.8);
+  }
+
+  5% {
+    transform: scale(0.9);
+  }
+
+  10% {
+    transform: scale(0.8);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+
+  to {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 800px) {
+  .form-container .text {
+    font-size: 1.875rem;
+  }
+  .form-container form {
+    padding: 0.125rem 0 0 0;
+  }
+  .form-container form .form-row {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  form .form-row .input-container {
+    margin: 1.25rem 0;
+  }
+  .submit-btn .input-container {
+    width: 100%;
+    margin-top: 3rem !important;
+  }
+}
